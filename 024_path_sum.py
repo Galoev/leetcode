@@ -11,26 +11,36 @@ class Solution:
     def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
         if not root:
             return False
-        self.targetSum = targetSum
-        return self.explore(root)
+        targetSum -= root.val
+        
+        if not root.left and not root.right and targetSum==0:
+            return True
+        
+        return self.hasPathSum(root.left, targetSum) or self.hasPathSum(root.right, targetSum)
 
-    def explore(self, node: TreeNode):
-        if not node.left and not node.right:
-            if node.val == self.targetSum:
-                return True
-            return False
+    # def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+    #     if not root:
+    #         return False
+    #     self.targetSum = targetSum
+    #     return self.explore(root)
+
+    # def explore(self, node: TreeNode):
+    #     if not node.left and not node.right:
+    #         if node.val == self.targetSum:
+    #             return True
+    #         return False
         
-        res_left = False
-        if node.left:
-            node.left.val += node.val
-            res_left = self.explore(node.left)
+    #     res_left = False
+    #     if node.left:
+    #         node.left.val += node.val
+    #         res_left = self.explore(node.left)
         
-        res_right = False
-        if node.right:
-            node.right.val += node.val
-            res_right = self.explore(node.right)
+    #     res_right = False
+    #     if node.right:
+    #         node.right.val += node.val
+    #         res_right = self.explore(node.right)
         
-        return res_right or res_left
+    #     return res_right or res_left
 
 
 def getTree(nums, root_id=0) -> TreeNode:
