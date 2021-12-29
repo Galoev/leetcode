@@ -10,7 +10,7 @@ from utils import Tree, TreeNode
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         node = root
-        while True:
+        while node:
             if node.val < p.val and node.val < q.val:
                 node = node.right
             elif node.val > p.val and node.val > q.val:
@@ -18,6 +18,8 @@ class Solution:
             else:
                 return node
         return None
+    
+    # def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
     #     path_to_p = self.getPathToNode(root, p)
     #     path_to_q = self.getPathToNode(root, q)
     #     len_n = min(len(path_to_p), len(path_to_q))
