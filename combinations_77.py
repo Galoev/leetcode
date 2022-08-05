@@ -12,7 +12,7 @@ class Solution:
             for i in range(start, n+1):
                 comb.append(i) 
                 backtrack(i+1, comb) 
-                comb.pop() 
+                comb.pop()
         backtrack(1, [])
 
         return res
