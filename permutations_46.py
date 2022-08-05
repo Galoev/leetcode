@@ -1,6 +1,4 @@
 from typing import List
-from unicodedata import name
-
 
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
