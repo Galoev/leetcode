@@ -1,4 +1,4 @@
-from typing import List
+from typing import Optional, List
 from collections import deque
 
 class TreeNode:
@@ -36,3 +36,30 @@ class Tree:
         return None
             
 
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+    
+    def __str__(self) -> str:
+        vals = []
+        cur_node = self
+        while cur_node != None:
+            vals.append(str(cur_node.val))
+            cur_node = cur_node.next
+        
+        return " -> ".join(vals)
+
+
+
+def creat_linked_list(nums: List[int]) -> ListNode:
+    head = ListNode(nums[0], None)
+    cur_node = head
+    for i in range(1, len(nums)):
+        node = ListNode(nums[i], None)
+        cur_node.next = node
+        cur_node = node
+    return head
+
+        
